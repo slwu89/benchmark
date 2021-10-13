@@ -10,19 +10,50 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _ranges_rcpp_hello_world() {
+// add_powers_cpp
+std::vector<int> add_powers_cpp(const int lo, const int hi, const int mult);
+RcppExport SEXP _ranges_add_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< const int >::type lo(loSEXP);
+    Rcpp::traits::input_parameter< const int >::type hi(hiSEXP);
+    Rcpp::traits::input_parameter< const int >::type mult(multSEXP);
+    rcpp_result_gen = Rcpp::wrap(add_powers_cpp(lo, hi, mult));
+    return rcpp_result_gen;
+END_RCPP
+}
+// add_negated_powers_cpp
+std::vector<int> add_negated_powers_cpp(const int lo, const int hi, const int mult);
+RcppExport SEXP _ranges_add_negated_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const int >::type lo(loSEXP);
+    Rcpp::traits::input_parameter< const int >::type hi(hiSEXP);
+    Rcpp::traits::input_parameter< const int >::type mult(multSEXP);
+    rcpp_result_gen = Rcpp::wrap(add_negated_powers_cpp(lo, hi, mult));
+    return rcpp_result_gen;
+END_RCPP
+}
+// add_range_cpp
+std::vector<int> add_range_cpp(const int lo, const int hi, const int mult);
+RcppExport SEXP _ranges_add_range_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const int >::type lo(loSEXP);
+    Rcpp::traits::input_parameter< const int >::type hi(hiSEXP);
+    Rcpp::traits::input_parameter< const int >::type mult(multSEXP);
+    rcpp_result_gen = Rcpp::wrap(add_range_cpp(lo, hi, mult));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ranges_rcpp_hello_world", (DL_FUNC) &_ranges_rcpp_hello_world, 0},
+    {"_ranges_add_powers_cpp", (DL_FUNC) &_ranges_add_powers_cpp, 3},
+    {"_ranges_add_negated_powers_cpp", (DL_FUNC) &_ranges_add_negated_powers_cpp, 3},
+    {"_ranges_add_range_cpp", (DL_FUNC) &_ranges_add_range_cpp, 3},
     {NULL, NULL, 0}
 };
 
