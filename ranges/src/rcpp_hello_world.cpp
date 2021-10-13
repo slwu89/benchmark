@@ -34,8 +34,11 @@ std::vector<int>::iterator add_powers_internal(std::vector<int>* dst, const int 
   
   static const int kmax = std::numeric_limits<int>::max();
   
+  Rcpp::Rcout << "calling add_powers with lo: " << lo << " and hi: " << hi << " and mult: " << mult << "\n";
+  
   // Space out the values in multiples of "mult"
   for (int i = 1; i <= hi; i *= mult) {
+    Rcpp::Rcout << "iterating, i: " << i << "\n"; 
     if (i >= lo) {
       dst->push_back(i);
     }
@@ -45,6 +48,12 @@ std::vector<int>::iterator add_powers_internal(std::vector<int>* dst, const int 
   }
   return dst->begin() + start_offset;
 }
+
+
+
+
+
+
 
 //' @title add negated powers cpp
 //' @examples add_negated_powers_cpp(lo = -bitwShiftL(a = 8, n = 10), hi = 0, mult = 8)
@@ -85,7 +94,7 @@ void add_negated_powers_internal(std::vector<int>* dst, const int lo, const int 
 //' @examples add_range_cpp(lo = -bitwShiftL(a = 8, n = 10), hi = bitwShiftL(a = 8, n = 10), mult = 8)
 //' @export
 // [[Rcpp::export]]
-std::vector<int> add_range_cpp(const int lo, const int hi, const int mult) {
+std::vector<int> add_range_cpp(const int lo, const int hi, const int mult = 8) {
   // static_assert(std::is_integral<T>::value && std::is_signed<T>::value,
   //               "Args type must be a signed integer");
   

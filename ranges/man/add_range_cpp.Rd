@@ -4,7 +4,7 @@
 \alias{add_range_cpp}
 \title{create a range}
 \usage{
-add_range_cpp(lo, hi, mult)
+add_range_cpp(lo, hi, mult = 8L)
 }
 \description{
 create a range

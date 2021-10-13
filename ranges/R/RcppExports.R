@@ -18,7 +18,7 @@ add_negated_powers_cpp <- function(lo, hi, mult) {
 #' @title create a range
 #' @examples add_range_cpp(lo = -bitwShiftL(a = 8, n = 10), hi = bitwShiftL(a = 8, n = 10), mult = 8)
 #' @export
-add_range_cpp <- function(lo, hi, mult) {
+add_range_cpp <- function(lo, hi, mult = 8L) {
     .Call(`_ranges_add_range_cpp`, lo, hi, mult)
 }
 
