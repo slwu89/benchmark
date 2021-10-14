@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // add_powers_cpp
 std::vector<int> add_powers_cpp(const int lo, const int hi, const int mult);
-RcppExport SEXP _ranges_add_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
+RcppExport SEXP _rangescpp_add_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,7 +25,7 @@ END_RCPP
 }
 // add_negated_powers_cpp
 std::vector<int> add_negated_powers_cpp(const int lo, const int hi, const int mult);
-RcppExport SEXP _ranges_add_negated_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
+RcppExport SEXP _rangescpp_add_negated_powers_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -38,7 +38,7 @@ END_RCPP
 }
 // add_range_cpp
 std::vector<int> add_range_cpp(const int lo, const int hi, const int mult);
-RcppExport SEXP _ranges_add_range_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
+RcppExport SEXP _rangescpp_add_range_cpp(SEXP loSEXP, SEXP hiSEXP, SEXP multSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -51,13 +51,13 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ranges_add_powers_cpp", (DL_FUNC) &_ranges_add_powers_cpp, 3},
-    {"_ranges_add_negated_powers_cpp", (DL_FUNC) &_ranges_add_negated_powers_cpp, 3},
-    {"_ranges_add_range_cpp", (DL_FUNC) &_ranges_add_range_cpp, 3},
+    {"_rangescpp_add_powers_cpp", (DL_FUNC) &_rangescpp_add_powers_cpp, 3},
+    {"_rangescpp_add_negated_powers_cpp", (DL_FUNC) &_rangescpp_add_negated_powers_cpp, 3},
+    {"_rangescpp_add_range_cpp", (DL_FUNC) &_rangescpp_add_range_cpp, 3},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_ranges(DllInfo *dll) {
+RcppExport void R_init_rangescpp(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

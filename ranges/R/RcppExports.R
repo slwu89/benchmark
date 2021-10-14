@@ -5,20 +5,20 @@
 #' @examples add_powers_cpp(lo = 8, hi = bitwShiftL(a = 8, n = 10), mult = 8)
 #' @export
 add_powers_cpp <- function(lo, hi, mult) {
-    .Call(`_ranges_add_powers_cpp`, lo, hi, mult)
+    .Call(`_rangescpp_add_powers_cpp`, lo, hi, mult)
 }
 
 #' @title add negated powers cpp
 #' @examples add_negated_powers_cpp(lo = -bitwShiftL(a = 8, n = 10), hi = 0, mult = 8)
 #' @export
 add_negated_powers_cpp <- function(lo, hi, mult) {
-    .Call(`_ranges_add_negated_powers_cpp`, lo, hi, mult)
+    .Call(`_rangescpp_add_negated_powers_cpp`, lo, hi, mult)
 }
 
 #' @title create a range
 #' @examples add_range_cpp(lo = -bitwShiftL(a = 8, n = 10), hi = bitwShiftL(a = 8, n = 10), mult = 8)
 #' @export
 add_range_cpp <- function(lo, hi, mult = 8L) {
-    .Call(`_ranges_add_range_cpp`, lo, hi, mult)
+    .Call(`_rangescpp_add_range_cpp`, lo, hi, mult)
 }
 

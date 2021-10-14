@@ -1,30 +1,5 @@
 
 
-#' #' @title add powers
-#' #' @export
-#' add_powers <- function(lo, hi, mult = 8) {
-#'   
-#'   lo <- as.integer(lo)
-#'   hi <- as.integer(hi)
-#'   mult <- as.integer(mult)
-#'   
-#'   stopifnot(lo >= 0)
-#'   stopifnot(hi >= lo)
-#'   stopifnot(mult >= 2)
-#'   
-#'   kmax <- .Machine$integer.max
-#'   
-#'   # space out the values in multiples of mult, to get from lo to hi, will have about lo * mult^x = hi, solve for x
-#'   dst <- lo * cumprod(x = c(1, rep(x = mult, each = floor(log(x = hi/lo, base = mult)))))
-#'   
-#'   if (any(dst > kmax)) {
-#'     stop("some elements of generated range larger than greatest representable integer!")
-#'   }
-#'   
-#'   return(as.integer(dst))
-#' }
-
-
 
 #' #' @title add powers
 #' @export
@@ -53,7 +28,6 @@ add_powers <- function(lo, hi, mult = 8) {
 }
 
 
-
 #' @title add negated powers
 #' @export
 add_negated_powers <- function(lo, hi, mult = 8) {
@@ -62,10 +36,12 @@ add_negated_powers <- function(lo, hi, mult = 8) {
   hi <- as.integer(hi)
   mult <- as.integer(mult)
   
-  # //   BM_CHECK_GT(lo, std::numeric_limits<T>::min());
-  # //   BM_CHECK_GT(hi, std::numeric_limits<T>::min());
-  # //   BM_CHECK_GE(hi, lo);
-  # //   BM_CHECK_LE(hi, 0);
+  kmin <- -.Machine$integer.max
+  
+  stopifnot(lo >= kmin)
+  stopifnot(hi >= kmin)
+  stopifnot(hi >= lo)
+  stopifnot(hi <= 0L)
   
   hi_inner = min(hi, -1L);
   
@@ -78,9 +54,10 @@ add_negated_powers <- function(lo, hi, mult = 8) {
   return(as.integer(dst))
 }
 
+
 #' @title create a range
 #' @export
-add_range <- function(lo, hi, mult = 8) {
+add_range <- function(lo, hi, mult = 8, exclude_zero = FALSE) {
   
   lo <- as.integer(lo)
   hi <- as.integer(hi)
@@ -105,8 +82,8 @@ add_range <- function(lo, hi, mult = 8) {
   }
   
   # Add all powers of 'mult' in the range [lo+1, hi-1] (inclusive).
-  lo_inner = lo + 1;
-  hi_inner = hi - 1;
+  lo_inner = lo + 1L;
+  hi_inner = hi - 1L;
   
   # insert negative values
   if (lo_inner < 0L) {
@@ -115,7 +92,7 @@ add_range <- function(lo, hi, mult = 8) {
   }
   
   # treat 0 as a special case
-  if (lo < 0L & hi >= 0L) {
+  if (lo < 0L & hi >= 0L & !exclude_zero) {
     dst <- c(dst, 0L)
   }
   

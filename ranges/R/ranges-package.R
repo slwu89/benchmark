@@ -1,5 +1,5 @@
 ## usethis namespace: start
-#' @useDynLib ranges, .registration = TRUE
+#' @useDynLib rangescpp, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 ## usethis namespace: end
 NULL

@@ -4,7 +4,7 @@
 \alias{add_range}
 \title{create a range}
 \usage{
-add_range(lo, hi, mult = 8)
+add_range(lo, hi, mult = 8, exclude_zero = FALSE)
 }
 \description{
 create a range
